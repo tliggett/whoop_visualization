@@ -1,0 +1,38 @@
+---
+title: "finalproject"
+author: "T.J. Liggett"
+date: "3/8/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+```{r}
+whoop_data <- read.csv("tj_whoop_data.csv")
+```
+
+```{r}
+whoop_data$date <- as.Date(whoop_data$days, format = "['%Y-%m-%d']")
+```
+
+```{r}
+ggplot(data = whoop_data) +
+  geom_smooth(mapping = aes(x = date, y = recovery.restingHeartRate)) +
+  theme_bw()
+
+ggplot(data = whoop_data) +
+  geom_smooth(mapping = aes(x = date, y = recovery.score)) +
+  theme_bw()
+
+ggplot(data = whoop_data) +
+  geom_smooth(mapping = aes(x = date, y = sleep.qualityDuration)) +
+  theme_bw()
+```
+
